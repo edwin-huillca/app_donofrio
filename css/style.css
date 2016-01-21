@@ -1,0 +1,39 @@
+/* Empty. Add your own CSS if you like */
+.bar.bar-assertive.bar-footer{background:#ffd200; border-color: #ffd800; }
+.bar.bar-assertive.bar-footer .title{font-size: 14px; line-height: 16px; color: #837960; padding-top: 5px;}
+.screendonofrio{background: url(../img/bottomScreen.png) no-repeat #ffec00; background-position: 50% 100%; background-size: 100% auto;}
+.screendonofrio2{background: url(../img/bottomScreenInt.png) no-repeat #ffec00; background-position: 50% 100%; background-size: 100% auto;}
+.logoScreen{width: 100%; margin-bottom: 15px;}
+.buttonsHome{width: 100%;}
+.colbtn{float: left; width: 40%;}
+.buttonsHome.int{padding-left: 15px; padding-right: 15px; margin-top: -20px;}
+.screenTop{background: url(../img/clouds.png) no-repeat; background-position: 0 50%; background-size: 100% auto;}
+
+.sepbtn{float: left; width: 20%; margin-top: 23px;}
+.sepbtn.sepint{margin-top:40px;}
+/**/
+.img-responsive{max-width: 100%; height: auto;}
+.center-block{display: block; margin-right: auto; margin-left: auto;}
+.show-md{display: none;}
+.list-inset{background: none;}
+.list-inset .item:last-child.item-input, .list-inset .item:first-child.item-input{border-radius: 25px;}
+.item-input{background: #f1f1f1; border-radius: 25px; margin-bottom: 15px;}
+.item-input .placeholder-icon{color: #73c0d6;}
+.item-input input, .input-label{color: #bcc7ca; font-size: 14px;}
+.button{border-radius: 25px;}
+.button.button-calm{background:#3c92ce;}
+.item-select select{background:#f1f1f1; }
+#map{width: 100%; height: 100%;}
+.header, .header button{background: #ffd200;}
+.sidemenu{background: url(../img/bgBottomSide.jpg) no-repeat #ffec00; background-position: 0 100%; background-size: 100% auto;}
+.sidemenu .item{background: #ffec00;}
+.modalspopup .popup{width: 85%;}
+/**/
+@media (max-width: 567px){
+	.hide-md{display: none;}
+	.show-md{display: block;}
+	.buttonsHome .colbtn,.buttonsHome .sepbtn{width: 100%;}
+	.sepbtn{margin-bottom: 15px; margin-top: 0px;}
+	.sepbtn.sepint{margin-top:0px; margin-bottom: 0px;}
+	.colbtn.colbtnInt{margin-top: -30px;}
+}

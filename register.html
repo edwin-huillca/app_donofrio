@@ -1,0 +1,43 @@
+<ion-view title="Registrate">
+    <ion-content padding="20" class="screendonofrio">
+    <div class="logoScreen">
+      <img src="img/logoDonofrioScreen.png" class="img-responsive center-block" alt="">
+    </div>
+    <form novalidate class="css-form" name="frmRegistro">
+    	<div class="list list-inset">
+	  		<label class="item item-input" ng-class="{'ng-invalid': !frmRegistro.txtName.$valid, 'ng-valid': frmRegistro.txtName.$valid}">
+	    		<i class="icon ion-person placeholder-icon"></i>
+	    		<input type="text" placeholder="Nombre" ng-model="user.name" maxlength="80" name="txtName" id="txtName" required>
+	  		</label>
+	  		<label class="item item-input" ng-class="{'ng-invalid': !frmRegistro.txtPhone.$valid, 'ng-valid': frmRegistro.txtPhone.$valid}">
+	    		<i class="icon ion-iphone placeholder-icon"></i>
+	    		<input type="tel" placeholder="Número de celular" ng-model="user.phone" ng-minlengt="9" ng-maxlength="9" name="txtPhone" id="txtPhone" required>
+	  		</label>
+	  		<label class="item item-input item-select" ng-class="{'ng-invalid': !frmRegistro.ddlUbigeo.$valid, 'ng-valid': frmRegistro.ddlUbigeo.$valid}">
+	  			<i class="icon ion-ios-location placeholder-icon"></i>
+	    		<div class="input-label">
+	    		Distrito
+	    		</div>
+			    <select name="ddlUbigeo" id="ddlUbigeo" ng-model="user.ubigeo" ng-init="user.ubigeo='Santiago de surco'" required>
+			    	<option ng-repeat="ubigeo in ubigeos" ng-value="ubigeo.id">{{ubigeo.label}}</option>
+			    </select>
+	  		</label>
+		  	<label class="item item-input" ng-class="{'ng-invalid': !frmRegistro.txtMail.$valid, 'ng-valid': frmRegistro.txtMail.$valid}">
+		    	<i class="icon ion-ios-email placeholder-icon"></i>
+		    	<input type="email" placeholder="Correo" ng-model="user.email" maxlength="100" name="txtMail" id="txtMail" required>
+		  	</label>
+		  	<label class="item item-input" ng-class="{'ng-invalid': !frmRegistro.txtNdoc.$valid, 'ng-valid': frmRegistro.txtNdoc.$valid}">
+		    	<i class="icon ion-iphone placeholder-icon"></i>
+		    	<input type="number" placeholder="DNI" ng-model="user.doc"  ng-minlengt="8" ng-maxlength="8" name="txtNdoc" id="txtNdoc" required>
+		  	</label>
+		  	<label class="item item-input" ng-class="{'ng-invalid': !frmRegistro.txtBirthdate.$valid, 'ng-valid': frmRegistro.txtBirthdate.$valid}">
+		    	<i class="icon ion-ios-calendar-outline placeholder-icon"></i>
+		    	<input type="date" placeholder="Fecha de nacimiento" ng-model="user.birthdate" maxlength="10" name="txtBirthdate" id="txtBirthdate" required>
+		  	</label>
+		</div>
+		<a href="javascript:;" class="button button-block button-calm" ng-click="validateRegister(user)">
+        	Registrar
+      	</a>
+	</form>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns       = "http://www.w3.org/ns/widgets"
+    xmlns:gap       = "http://phonegap.com/ns/1.0"
+    xmlns:android   = "http://schemas.android.com/apk/res/android"
+    id              = "com.larocheposay.app"
+    version         = "1.0.0">
+<name>DONOFRIO</name>
+<description>Aplicación para Nestle Peru</description>
+
+<!--
+<icon src="images/ic_launcher96x96.png" />
+<icon src="images/ic_launcher48x48.png"   gap:platform="android"    gap:qualifier="ldpi" />
+<icon src="images/ic_launcher48x48.png"   gap:platform="android"    gap:qualifier="mdpi" />
+<icon src="images/ic_launcher72x72.png"   gap:platform="android"    gap:qualifier="hdpi" />
+<icon src="images/ic_launcher96x96.png"  gap:platform="android"    gap:qualifier="xhdpi" />
+-->
+<preference name="ios-statusbarstyle" value="black-opaque" />
+
+<feature name="http://api.phonegap.com/1.0/network"/>
+<feature name="http://api.phonegap.com/1.0/device"/>
+<feature name="http://api.phonegap.com/1.0/file" />
+<feature name="http://api.phonegap.com/1.0/camera" />
+
+<!--
+<gap:platform name="android" />
+-->
+
+<gap:plugin name="org.apache.cordova.device" />
+
+<access origin="*" subdomains="false"  />
+</widget>
