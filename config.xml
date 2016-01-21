@@ -29,8 +29,8 @@
 
 <gap:plugin name="org.apache.cordova.device" />
 <gap:plugin name="org.apache.cordova.geolocation" />
-<gap:plugin name="com.phonegap.plugins.facebookconnect" />
-<!--
+<!--<gap:plugin name="com.phonegap.plugins.facebookconnect" />
+
 <gap:plugin name="com.ionic.keyboard" />
 <gap:plugin name="com.indigoway.cordova.whitelist.whitelistplugin" />
 -->
