@@ -21,6 +21,15 @@
 <feature name="http://api.phonegap.com/1.0/file" />
 <feature name="http://api.phonegap.com/1.0/camera" />
 
+<gap:plugin name="cordova-plugin-console" source="npm" version="1.0.2" />
+<gap:plugin name="cordova-plugin-device" source="npm" version="1.1.0" />
+<gap:plugin name="cordova-plugin-geolocation" source="npm" version="1.0.1" />
+<gap:plugin name="cordova-plugin-splashscreen" source="npm" version="3.0.0" />
+<gap:plugin name="cordova-plugin-statusbar" source="npm" version="2.0.0" />
+<gap:plugin name="cordova-plugin-whitelist" source="npm" version="1.2.0" />
+<gap:plugin name="ionic-plugin-keyboard" source="npm" version="1.0.8" />
+<gap:plugin name="phonegap-facebook-plugin" source="npm" version="0.12.0" />
+
 <!--
 <gap:platform name="android" />
 -->
