@@ -1,21 +1,3 @@
-<ion-view title="Buscar">
-  	<ion-side-menus>
-  		<ion-side-menu-content>
-			<ion-header-bar class="header">
-				<div class="buttons">
-					<button menu-toggle="left" class="button icon button-clear ion-navicon-round" ng-click="toggleLeft()"></button>
-				</div>
-		  	</ion-header-bar>
-		  	<ion-content scroll="false" class="screendonofrio2">
-			    <div id="map" data-tap-disabled="true"></div>
-		  	</ion-content>
-  		</ion-side-menu-content>
-		<ion-side-menu side="left" class="sidemenu">
-			<ion-list>
-				<ion-item ng-click="home()">Descubre nuestros helados</ion-item>
-				<ion-item ng-click="showterm()" ng-controller="modalCtrl" >Política de privacidad</ion-item>
-				<!--ion-item ng-click="close()" >Cerrar sesión</ion-item-->
-			</ion-list>
-		</ion-side-menu>
-  	</ion-side-menus>
+<ion-view class="screendonofrio2">
+  	<div id="map" data-tap-disabled="true"></div>
 </ion-view>

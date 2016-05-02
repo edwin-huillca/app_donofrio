@@ -18,7 +18,7 @@
 	    		<div class="input-label">
 	    		Distrito
 	    		</div>
-			    <select name="ddlUbigeo" id="ddlUbigeo" ng-model="user.ubigeo" ng-init="user.ubigeo='Santiago de surco'" required>
+			    <select name="ddlUbigeo" id="ddlUbigeo" ng-model="user.ubigeo" ng-init="user.ubigeo='Miraflores'" required>
 			    	<option ng-repeat="ubigeo in ubigeos" ng-value="ubigeo.id">{{ubigeo.label}}</option>
 			    </select>
 	  		</label>
@@ -38,6 +38,7 @@
 		<a href="javascript:;" class="button button-block button-calm" ng-click="validateRegister(user)">
         	Registrar
       	</a>
+      	<br><br>
 	</form>
   </ion-content>
 </ion-view>

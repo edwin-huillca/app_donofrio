@@ -1,0 +1,41 @@
+<ion-view class="screenFestivo2" scroll="false">
+    <ion-content padding="20">
+	    <div class="logoScreen">
+	    	<br><br><br><br><br><br><br><br>
+	      	<img src="img/confirmData.png" class="img-responsive center-block" alt="" style="max-width:250px;">
+	    </div>
+	    <form novalidate class="css-form" name="frmRegistro">
+	    	<div class="list list-inset">
+		  		<label class="item item-input" ng-class="{'ng-invalid': !frmRegistro.txtName.$valid, 'ng-valid': frmRegistro.txtName.$valid}">
+		    		<i class="icon ion-person placeholder-icon"></i>
+		    		<input type="text" placeholder="Persona de contacto" ng-model="user.name" maxlength="80" name="txtName" id="txtName" required>
+		  		</label>
+		  		<label class="item item-input" ng-class="{'ng-invalid': !frmRegistro.txtPhone.$valid, 'ng-valid': frmRegistro.txtPhone.$valid}">
+		    		<i class="icon ion-iphone placeholder-icon"></i>
+		    		<input type="tel" placeholder="Teléfono" ng-model="user.phone" ng-minlengt="9" ng-maxlength="9" name="txtPhone" id="txtPhone" required>
+		  		</label>
+		  		<label class="item item-input" ng-class="{'ng-invalid': !frmRegistro.txtAddress.$valid, 'ng-valid': frmRegistro.txtAddress.$valid}">
+		    		<i class="icon ion-iphone placeholder-icon"></i>
+		    		<input type="text" placeholder="Dirección de envio" ng-model="user.address" ng-maxlength="80" name="txtAddress" id="txtAddress" required>
+		  		</label>
+		  		<label class="item item-input item-select" ng-class="{'ng-invalid': !frmRegistro.ddlUbigeo.$valid, 'ng-valid': frmRegistro.ddlUbigeo.$valid}">
+		  			<i class="icon ion-ios-location placeholder-icon"></i>
+		    		<div class="input-label">
+		    		Distrito
+		    		</div>
+				    <select name="ddlUbigeo" id="ddlUbigeo" ng-model="user.ubigeo" ng-init="user.ubigeo='Miraflores'" required>
+				    	<option ng-repeat="ubigeo in ubigeos" ng-value="ubigeo.id">{{ubigeo.label}}</option>
+				    </select>
+		  		</label>
+			  	<label class="item item-input" ng-class="{'ng-invalid': !frmRegistro.txtDateDelivery.$valid, 'ng-valid': frmRegistro.txtDateDelivery.$valid}">
+			    	<i class="icon ion-ios-calendar-outline placeholder-icon"></i>
+			    	<input type="date" placeholder="Fecha de entrega" ng-model="user.datedelivery" maxlength="10" name="txtDateDelivery" id="txtDateDelivery" required>
+			  	</label>
+			</div>
+			<a href="javascript:;" class="button button-block button-calm" ng-click="sendPaq(user)">
+	        	Confirmar
+	      	</a>
+	      	<br><br>
+		</form>
+  	</ion-content>
+</ion-view>

@@ -3,6 +3,8 @@
 .bar.bar-assertive.bar-footer .title{font-size: 14px; line-height: 16px; color: #837960; padding-top: 5px;}
 .screendonofrio{background: url(../img/bottomScreen.png) no-repeat #ffec00; background-position: 50% 100%; background-size: 100% auto;}
 .screendonofrio2{background: url(../img/bottomScreenInt.png) no-repeat #ffec00; background-position: 50% 100%; background-size: 100% auto;}
+.screenFestivo{background: url(../img/bgFest.jpg) no-repeat #ffec00; background-size: 100% 100%;}
+.screenFestivo2{background: url(../img/bgFest2.jpg) no-repeat #ffec00; background-size: 100% 100%;}
 .logoScreen{width: 100%; margin-bottom: 15px;}
 .buttonsHome{width: 100%;}
 .colbtn{float: left; width: 40%;}
@@ -28,6 +30,13 @@
 .sidemenu{background: url(../img/bgBottomSide.jpg) no-repeat #ffec00; background-position: 0 100%; background-size: 100% auto;}
 .sidemenu .item{background: #ffec00;}
 .modalspopup .popup{width: 85%;}
+.button-clear.button-clear{color:#666666;}
+.item-avatar > img:first-child {
+    max-width: 50px;
+    max-height: 50px;
+    top: 2px;
+  }
+ .bar.bar-energized .title{color: #837960; font-size: 14px;}
 /**/
 @media (max-width: 567px){
 	.hide-md{display: none;}

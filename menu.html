@@ -1,0 +1,33 @@
+<ion-view>
+  	<ion-side-menus enable-menu-with-back-views="true">
+  		<ion-side-menu-content>
+			<ion-header-bar class="header">
+				<button menu-toggle="left" class="button icon button-clear ion-navicon-round"></button>
+				<button menu-close class="button icon button-clear ion-ios-home" ng-click="home()"></button>
+		  	</ion-header-bar>
+		  	<ion-content scroll="false" class="screendonofrio2" padding="false">
+		  		<ion-nav-view></ion-nav-view>
+		  	</ion-content>
+  		</ion-side-menu-content>
+		<ion-side-menu side="left" class="sidemenu">
+			<ion-header-bar class="bar-energized">
+				<div class="item-avatar">
+			    	<img src="{{picturefb}}">
+			  	</div>
+			  	<div class="h1 title"><b>Hola {{namefb}}</b>
+			  		<!--a href="">Editar perfil <i class="con ion-edit"></i></a-->
+			  	</div>
+	        </ion-header-bar>
+	        <ion-content scroll="false">
+	            <ion-list>
+	            	<ion-item menu-close ng-click="select()"><b>Descubre nuestros helados</b></ion-item>
+					<ion-item menu-close ng-click="mapsearch()"><b>Encuentra tus helados <br>favoritos más cerca de ti</b></ion-item>
+					<ion-item menu-close ng-click="selectcart()"><b>Lleva más diversión a tu <br>fiesta con nuestros combos</b></ion-item>
+					<ion-item menu-close ng-click="showterm()">Términos y condiciones</ion-item>
+					<ion-item menu-close ng-click="showpol()">Política de privacidad</ion-item>
+					<!--ion-item ng-click="close()" >Cerrar sesión</ion-item-->
+				</ion-list>
+	        </ion-content>
+		</ion-side-menu>
+  	</ion-side-menus>
+</ion-view>

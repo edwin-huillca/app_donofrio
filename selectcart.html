@@ -1,52 +1,18 @@
-<ion-view title="Ingresar">
-    <ion-content class="screendonofrio2">
-	    <div class="logoScreen screenTop">
-	    	<br>
-	    	<img src="img/btnGetCart.png" class="img-responsive center-block" alt="">
-	    </div>
-	    <div class="list list-inset">
-	    	<form novalidate class="css-form" name="frmSelectCart">
-	    		<label class="item item-input" ng-class="{'ng-invalid': !frmSelectCart.txtAddress.$valid, 'ng-valid': frmSelectCart.txtMail.$valid}">
-				    <i class="icon ion-pin placeholder-icon"></i>
-				    <input type="text" placeholder="Dirección de envío" name="txtAddress" id="txtAddress" ng-model="paquete.address">
-				</label>
-				<label class="item item-input item-select" ng-class="{'ng-invalid': !frmSelectCart.ddlPaq1.$valid, 'ng-valid': frmSelectCart.txtMail.$valid}">
-			  		<i class="icon ion-plus-round placeholder-icon"></i>
-			    	<div class="input-label">
-			      		Paquete 1
-			    	</div>
-			    	<select name="ddlPaq1" id="ddlPaq1" ng-model="paquete.paquete1" ng-init="paquete.paquete1='2 paquetes de helados'">
-			    		<option value="2 paquetes de helados">2 paquetes de helados</option>
-			    		<option value="">3 paquetes de helados</option>
-			    		<option value="">7 paquetes de helados</option>
-			    	</select>
-			  	</label>
-			  	<label class="item item-input item-select" ng-class="{'ng-invalid': !frmSelectCart.ddlPaq2.$valid, 'ng-valid': frmSelectCart.txtMail.$valid}">
-			  		<i class="icon ion-plus-round placeholder-icon"></i>
-			    	<div class="input-label">
-			      		Paquete 2
-			    	</div>
-			    	<select name="ddlPaq2" id="ddlPaq2" ng-model="paquete.paquete2" ng-init="paquete.paquete2='2 paquetes de helados'">
-			    		<option value="2 paquetes de helados">2 paquetes de helados</option>
-			    		<option value="">3 paquetes de helados</option>
-			    		<option value="">7 paquetes de helados</option>
-			    	</select>
-			  	</label>
-			  	<label class="item item-input item-select" ng-class="{'ng-invalid': !frmSelectCart.ddlPaq3.$valid, 'ng-valid': frmSelectCart.txtMail.$valid}">
-			  		<i class="icon ion-plus-round placeholder-icon"></i>
-			    	<div class="input-label">
-			      		Paquete 3
-			    	</div>
-			    	<select name="ddlPaq3" id="ddlPaq3" ng-model="paquete.paquete3" ng-init="paquete.paquete3='2 paquetes de helados'">
-			    		<option value="2 paquetes de helados">2 paquetes de helados</option>
-			    		<option value="">3 paquetes de helados</option>
-			    		<option value="">7 paquetes de helados</option>
-			    	</select>
-			  	</label>
-			  	<a href="javascript:;" class="button button-block button-calm" ng-click="sendPaq(paquete)">
-		        	Registrar
-		      	</a>
-	    	</form>
-	    </div>
-  	</ion-content>
+<ion-view class="screenFestivo">
+  	<div class="row row-center" style="height:100%;">
+		<div class="col">
+			<div class="col">
+    			<a href="javascript:;" ng-click="paq1()"><img src="img/btnCombo1.png" class="img-responsive center-block"></a>
+    		</div>
+    		<div class="col">
+    			<a href="javascript:;" ng-click="paq2()"><img src="img/btnCombo2.png" class="img-responsive center-block"></a>
+    		</div>
+    		<div class="col">
+    			<a href="javascript:;" ng-click="paq3()"><img src="img/btnCombo3.png" class="img-responsive center-block"></a>
+    		</div>
+    		<div class="col">
+    			<a href="javascript:;" ng-click="paq4()"><img src="img/btnCombo4.png" class="img-responsive center-block"></a>
+    		</div>
+		</div>
+	</div>
 </ion-view>

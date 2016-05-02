@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
   <title></title>
 
   <link href="lib/ionic/css/ionic.css" rel="stylesheet">
@@ -15,14 +16,21 @@
 
   <!-- ionic/angularjs js -->
   <script src="lib/ionic/js/ionic.bundle.js"></script>
+  <script src="lib/ionic/js/angular/angular-cookies.min.js"></script>
+  
   <script src="js/jquery.js"></script>
   <!-- cordova script (this will be a 404 during development) -->
   <script src="js/ng-cordova.min.js"></script>
   <script src="cordova.js"></script>
 
   <script src="js/socket.io-1.4.3.js"></script>
+  <script src="js/latlon-geohash.js"></script>
   
   <script src="https://maps.google.com/maps/api/js?key=AIzaSyDktb8fD32tf-zedo5kIs3-wrEWUl2qRtQ"></script>
+  <script src="js/crypto/rollups/pbkdf2.js"></script>
+  <script src="js/crypto/rollups/sha256.js"></script>
+  <script src="js/crypto/rollups/aes.js"></script>
+  <script src="js/crypto/rollups/hmac-sha256.js"></script>
 
   <!-- your app's js -->
   <script src="js/app.js"></script>
@@ -33,10 +41,17 @@
   
 </head>
 <body ng-app="app">
-  <div id="fb-root"></div>
-  <ion-nav-view></ion-nav-view>
-  <ion-footer-bar align-title="center" class="bar-assertive">
-    <h4 class="title">Al registrarte, aceptas nuestras <br><a href="javascript:;" ng-controller="modalCtrl" ng-click="showterm()">Condiciones y políticas de privacidad.</a></h4>
-  </ion-footer-bar>
+    <!--ion-pane>
+      <ion-header-bar class="bar-stable">
+        <h1 class="title">Local Notification Example</h1>
+      </ion-header-bar>
+      <ion-content ng-controller="NotificationController">
+      </ion-content>
+    </ion-pane-->
+    <div id="fb-root"></div>
+    <ion-nav-view></ion-nav-view>
+    <ion-footer-bar align-title="center" class="bar-assertive" ng-controller="generalCtrl">
+      <h4 class="title">Al registrarte, aceptas nuestras <br><a href="javascript:;" ng-click="showterm()">Condiciones y políticas de privacidad.</a></h4>
+    </ion-footer-bar>
 </body>
 </html>
