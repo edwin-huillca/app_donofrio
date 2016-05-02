@@ -14,6 +14,7 @@
 <icon src="img/android/icon/drawable-hdpi-icon.png"   gap:platform="android"    gap:qualifier="hdpi" />
 <icon src="img/android/icon/drawable-xhdpi-icon.png"  gap:platform="android"    gap:qualifier="xhdpi" />
 
+<!--
 <platform name="ios">
   <icon src="img/ios/icon/icon-60@3x.png" width="180" height="180" />
   <icon src="img/ios/icon/icon-60.png" width="60" height="60" />
@@ -31,6 +32,7 @@
   <icon src="img/ios/icon/icon-50.png" width="50" height="50" />
   <icon src="img/ios/icon/icon-50@2x.png" width="100" height="100" />
 </platform>
+-->
 
 <preference name="ios-statusbarstyle" value="black-opaque" />
 
