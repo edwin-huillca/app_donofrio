@@ -16,52 +16,8 @@ angular.module('app.controllers', [])
 	}
 })
 
-.controller('homeCtrl', function($scope, $cordovaDevice, $state, $q, FBService, $ionicLoading, UserService, $http, $ionicPopup) {
-	var fbLoginSuccess = function(response) {// IF LOGIN FB IS SUCCESS
-		    if (!response.authResponse){
-		      	fbLoginError("Cannot find the authResponse");
-		      	return;
-		    }
-
-		    var authResponse = response.authResponse;
-
-		    getFacebookProfileInfo(authResponse).then(function(profileInfo) {
-
-	      		FBService.setUser({
-	        		authResponse: authResponse,
-					userID: profileInfo.id,
-					name: profileInfo.name,
-					email: profileInfo.email,
-	        		picture : "https://graph.facebook.com/" + authResponse.userID + "/picture?type=large"
-	      		});
-	      		$ionicLoading.hide();
-	      		console.log(skipRegister);
-
-	    	}, function(fail){
-
-	      		console.log('profile info fail', fail);
-	    	});
-		},
-		fbLoginError = function(error){//IF LOGIN FB IS ERROR
-	    	console.log('fbLoginError', error);
-	    	$ionicLoading.hide();
-	  	},
-	  	getFacebookProfileInfo = function (authResponse) {//GET DATA FB LOGIN
-	    	var info = $q.defer();
-
-	    	facebookConnectPlugin.api('/me?fields=email,name&access_token=' + authResponse.accessToken, null,
-	      		function (response) {
-					console.log(response);
-	        		info.resolve(response);
-	      		},
-	      		function (response) {
-					console.log(response);
-	        		info.reject(response);
-	      		}
-	    	);
-	    	return info.promise;
-	  	},
-	  	myPopup = $ionicPopup.show({//ALERT
+.controller('homeCtrl', function($scope, $cordovaDevice, $state, $q, UserService, $ionicLoading, UserService, $http, $ionicPopup) {
+	var myPopup = $ionicPopup.show({//ALERT
 	        template: '',
 	        title: 'Uso de la aplicación Heladero Dnofrio',
 	        subTitle: 'Al activar el botón Usted acepta que la aplicación puede usar las cordenadas de ubicación de su dispositivo móvil para poder ser encontrado por los clientes de D\'nofrio.<br><b>ESTA APLICACIÓN SOLO ESTARÁ DISPONIBLE PARA LOS DISTRITOS DE MIRAFLORES Y SAN ISIDRO.</b>',
@@ -81,48 +37,12 @@ angular.module('app.controllers', [])
 	            }
 	        ]
 	    });
-
 	$scope.facebookSignIn = function() {
-	    facebookConnectPlugin.getLoginStatus(function(success){
-	      	if(success.status === 'connected'){
-
-		        console.log('getLoginStatus', success.status);
-
-	    		var user = FBService.getUser('facebook');
-	    		console.log(user);
-
-	    		if(!user.userID){
-	    			console.log('storage vacio fb');
-					getFacebookProfileInfo(success.authResponse)
-					.then(function(profileInfo) {
-
-						FBService.setUser({
-							authResponse: success.authResponse,
-							userID: profileInfo.id,
-							name: profileInfo.name,
-							email: profileInfo.email,
-							picture : "https://graph.facebook.com/" + success.authResponse.userID + "/picture?type=large"
-						});
-						console.log(skipRegister);
-
-						$state.go('menu.select');
-
-					}, function(fail){
-						console.log('profile info fail', fail);
-					});
-				}else{
-					$state.go('register');
-				}
-	      	}else{
-				console.log('getLoginStatus', success.status);
-
-				$ionicLoading.show({
-	          		template: 'Autenticando...'
-	        	});
-
-	        	facebookConnectPlugin.login(['email', 'public_profile'], fbLoginSuccess, fbLoginError);
-	      	}
-	    });
+		if(skipRegister){
+			$state.go('select');
+		}else{
+			$state.go('register');
+		}
 	};
 })
 
@@ -191,23 +111,24 @@ angular.module('app.controllers', [])
 
 .controller('selectCtrl', function($scope, $state) {
 	$scope.mapsearch = function(){
+		$state.go('menu');
 		$state.go('menu.mapsearch');
 	}
 	$scope.menu = function(){
+		$state.go('menu');
 		$state.go('menu.selectcart');
 	}
 })
 
-.controller('mapSearchCtrl', function($scope, $state, $cordovaGeolocation, $ionicLoading) {
+.controller('mapSearchCtrl', function($scope, $state, $ionicSideMenuDelegate, $cordovaGeolocation, $ionicLoading, UserService, FBService, $http) {
 	ionic.Platform.ready(function(){
-		/*$ionicLoading.show({
+		$ionicLoading.show({
 	        template: '<ion-spinner icon="bubbles"></ion-spinner><br/>Adquiriendo ubicación'
-	    });*/
+	    });
 
 		var posOptions = {enableHighAccuracy: true, timeout: 20000, maximumAge: 0};
 
 	    $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
-	    	
 	        var lat  = position.coords.latitude;
 	        var long = position.coords.longitude;
 	         
@@ -220,20 +141,21 @@ angular.module('app.controllers', [])
 	        };
 	         
 	        var map = new google.maps.Map(document.getElementById("map"), mapOptions), markerstoreti = [], markerStore = {};
+
 	        /*list stores*/
-	        if(Object.keys(liststores).length > 0){
-	        	for(i=0; i< Object.keys(liststores).length; i++){
-		            markerstoreti[i] = new google.maps.Marker({
-		              position: new google.maps.LatLng(liststores[i].geoloca.split(',')[0], liststores[i].geoloca.split(',')[1]),
-		              map: map,
-		              icon: 'img/geoIcoDon.png'
-		            });
+			if(Object.keys(liststores).length > 0){
+				for(i=0; i< Object.keys(liststores).length; i++){
+		        	markerstoreti[i] = new google.maps.Marker({
+			        	position: new google.maps.LatLng(liststores[i].geoloca.split(',')[0], liststores[i].geoloca.split(',')[1]),
+			        	map: map,
+			        	icon: 'img/geoIcoDon.png'
+			      	});
 		        }
-	        }
-		    
+			}
 	        /*socket.io*/
+	        socket = io.connect('https://www.chocolatesublime.pe', { query: "token=" + token });
+	        /*start for markers*/
 			socket.on('allClients', function(data) {
-				//console.log(data);
 				$.each(data, function(){
 					if(this.status == 0){
 						if(markerStore[this.id]) markerStore[this.id].setMap(null);
@@ -253,10 +175,10 @@ angular.module('app.controllers', [])
 					}
 				});
 			});
+	         
+	        $scope.map = map;
 
-			$scope.map = map;
-
-			$ionicLoading.hide();
+	        $ionicLoading.hide();           
 	         
 	    }, function(err) {
 	        $ionicLoading.hide();
@@ -279,9 +201,11 @@ angular.module('app.controllers', [])
 		$state.go('menu.select');
 	}
 	$scope.mapsearch = function(){
+		$state.go('menu');
 		$state.go('menu.mapsearch');
 	}
 	$scope.selectcart = function(){
+		$state.go('menu');
 		$state.go('menu.selectcart');
 	}
 	$scope.showterm = function(){

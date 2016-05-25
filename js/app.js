@@ -11,7 +11,7 @@ angular.module('app', ['ionic', 'ngCordova', 'ngCookies', 'app.controllers', 'ap
     $httpProvider.defaults.xsrfHeaderName = 'Cookie';
 })*/
 
-.run(function($ionicPlatform, $cordovaLocalNotification, $cordovaGeolocation, $ionicLoading, $http, $cordovaDevice, $state, $cookies) {
+.run(function($ionicPlatform, $cordovaGeolocation, $ionicLoading, $http, $cordovaDevice, UserService, $state, $cookies) {
   
   window.localStorage.clear();
   $ionicPlatform.ready(function() {
@@ -43,60 +43,21 @@ angular.module('app', ['ionic', 'ngCordova', 'ngCookies', 'app.controllers', 'ap
 
     $http.post(link, {
       uuid: $cordovaDevice.getUUID()
-      }).then(function (res){
-        //$ionicLoading.hide();
-        console.log(res);
-        //$scope.response = res.data.response;
-        if(res.data.response == 1){
-          token = res.data.token;
-          console.log(skipRegister);
-          skipRegister = true;
-          console.log(skipRegister);
+    }).then(function (res){
+      if(res.data.response == 1){
+        token = res.data.token;
+        skipRegister = true;
+        UserService.setUser({
+          uuid: $cordovaDevice.getUUID(),
+          name: res.data.users.name,
+          ubigeo: res.data.users[0].ubigeo,
+          phone: res.data.users[0].phone,
+          email: res.data.users[0].email
+        });
 
-          //map for notifications
-          var ids = [], cids = 0
-          var watchOptions = {timeout : 30000, enableHighAccuracy: false};
-          var watch = $cordovaGeolocation.watchPosition(watchOptions);
-
-          socket = io.connect('https://www.chocolatesublime.pe',{query: "token=" + token});
-
-          watch.then(null, function(err) {
-            watch.clearWatch();
-            //console.log(err);
-          },
-          function(position) {
-            var cpos = {lat: position.coords.latitude, lng: position.coords.longitude}, sound = 'file://sound/alertDonofrio.mp3';
-
-            socket.on('allClients', function(data) {
-              $.each(data, function(){
-                var nlocate = Geohash.decode(this.locate), lcpos = {lat: nlocate.lat, lng: nlocate.lon};
-
-                if(distance(nlocate.lat, nlocate.lon, position.coords.latitude, position.coords.longitude) <= 0.04 && !searchIds(ids, this.id)){
-                  //if(distance(nlocate.lat, nlocate.lon, position.coords.latitude, position.coords.longitude) <= 20 && !searchIds(ids, this.id)){
-                  ids.push(this.id);
-                  cids++;
-                  $cordovaLocalNotification.schedule({
-                    id: 1,
-                    title: 'D\'nofrio',
-                    text: "Un heladero donofrio está cerca a ti.",
-                    sound: sound,
-                    data: {
-                      customProperty: 'custom value'
-                    }
-                  }).then(function (result) {
-                    console.log('Notification 1 triggered');
-                  });
-                }
-
-              });
-            });
-          });
-          //end notifications
-
-          if($('#map').length) map;
-        }
+        console.log(res.data.users[0]);
+      }
     });
-      /*end valida el uuid y redirecciona a select*/
   });
 });
 

@@ -26,16 +26,16 @@ angular.module('app.routes', [])
       controller: 'selectCtrl'
     })
 
-    .state('menu', {
-      url: '/menu',
-      templateUrl: 'menu.html',
-      controller: 'menuCtrl'
-    })
-
     .state('menu.select', {
       url: '/select',
       templateUrl: 'select.html',
       controller: 'selectCtrl'
+    })
+
+    .state('menu', {
+      url: '/menu',
+      templateUrl: 'menu.html',
+      controller: 'menuCtrl'
     })
 
     .state('menu.selectcart', {
