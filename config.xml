@@ -5,7 +5,7 @@
     id              = "com.donofrio.app"
     version         = "1.0.0">
 <name>DONOFRIO</name>
-<description>Aplicación para Nestlé Perú</description>
+<description>Aplicación para Nestlé Perú SA</description>
 
 
 <icon src="img/android/icon/drawable-xhdpi-icon.png" />
